@@ -75,8 +75,8 @@ namespace tcp
 		{
 			FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
 		
-			string numberOfBytesToBeReceived;
-			string totalNumberOfReceivedBytes;
+			int numberOfBytesToBeReceived = 0;
+			int totalNumberOfReceivedBytes = 0;
 			Byte[] receivingBuffer = new byte[BUFSIZE]; 
 
 
