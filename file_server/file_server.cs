@@ -41,18 +41,12 @@ namespace tcp
 				NetworkStream inFromClient = clientSocket.GetStream ();
 
 				//Besked læses, og data lægges i bytesFrom
-				string dataFromClient = tcp.LIB.readTextTCP(inFromClient);
+				string fileName = tcp.LIB.readTextTCP(inFromClient);
 
-				string fileName = tcp.LIB.extractFileName (dataFromClient);
+				long fileSize = tcp.LIB.check_File_Exists (fileName);
 
-				FileInfo fInfo = new FileInfo (fileName);
-
-				if (!fInfo.Exists) 
-				{
-					Console.WriteLine ("File doesn't exist");
-				}
-
-				long fileSize = fInfo.Length (fileName);
+				string mySize = System.Text.Encoding.ASCII (fileSize);
+				tcp.LIB.writeTextTCP (io, mySize);
 
 				sendFile (fileName, fileSize, inFromClient);
 
@@ -81,11 +75,11 @@ namespace tcp
 		/// </param>
 		private void sendFile (String fileName, long fileSize, NetworkStream io)
 		{
-			byte[] myBuf = new byte[BUFSIZE];
-			io.Read (myBuf, 0, fileSize);
-			string fileData = System.Text.Encoding.ASCII (myBuf);
-			tcp.LIB.writeTextTCP (io, fileData);
+			string mySize = System.Text.Encoding.ASCII (fileSize);
+			tcp.LIB.writeTextTCP (io, mySize);
 
+			byte[] myBuf = new byte[BUFSIZE];
+			while(
 			// TO DO Your own code
 		}
 
