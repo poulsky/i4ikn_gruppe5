@@ -40,15 +40,22 @@ namespace tcp
 				//Modtager besked fra client
 				NetworkStream inFromClient = clientSocket.GetStream ();
 
+
 				//Besked læses, og data lægges i bytesFrom
 				string fileName = tcp.LIB.readTextTCP(inFromClient);
 
+				Console.WriteLine ("Client request: " + fileName);
+
 				long fileSize = tcp.LIB.check_File_Exists (fileName);
 
-				string mySize = System.Text.Encoding.ASCII (fileSize);
-				tcp.LIB.writeTextTCP (io, mySize);
+				string mySize = fileSize.ToString();
 
-				sendFile (fileName, fileSize, inFromClient);
+				tcp.LIB.writeTextTCP (inFromClient, mySize);
+
+				if (fileSize != 0)
+					sendFile (fileName, fileSize, inFromClient);
+				else
+					Console.WriteLine ("File doesn't exist");
 
 				clientSocket.Close ();
 				welcomeScoket.Stop ();
@@ -75,11 +82,29 @@ namespace tcp
 		/// </param>
 		private void sendFile (String fileName, long fileSize, NetworkStream io)
 		{
-			string mySize = System.Text.Encoding.ASCII (fileSize);
-			tcp.LIB.writeTextTCP (io, mySize);
+			
+			//StreamReader Sr = new StreamReader (fileName);
+			int CurrentLength = (int)fileSize;
 
-			byte[] myBuf = new byte[BUFSIZE];
-			while(
+			//char[] myBuf = new char[CurrentLength];
+			//
+			//Sr.Read (myBuf, 0, CurrentLength);
+			//
+			//string streng = new string(myBuf);
+
+
+
+			byte[] myBytes = new byte[CurrentLength];
+			FileStream Fs = new FileStream (fileName, FileMode.Open, FileAccess.Read);
+
+			Fs.Read (myBytes, 0, myBytes.Length);
+
+			io.Write (myBytes, 0, myBytes.Length);
+
+			Console.WriteLine (myBytes.Length);
+			//tcp.LIB.writeTextTCP (io,streng);
+
+
 			// TO DO Your own code
 		}
 
@@ -93,6 +118,7 @@ namespace tcp
 		{
 			Console.WriteLine ("Server starts...");
 			new file_server();
+
 		}
 	}
 }
