@@ -84,7 +84,8 @@ namespace tcp
 		{
 			
 			//StreamReader Sr = new StreamReader (fileName);
-			int CurrentLength = (int)fileSize;
+			int totalSize = (int)fileSize;
+			int totalAmountSend = 0;
 
 			//char[] myBuf = new char[CurrentLength];
 			//
@@ -94,16 +95,20 @@ namespace tcp
 
 
 
-			byte[] myBytes = new byte[CurrentLength];
+			byte[] myBytes = new byte[BUFSIZE];
 			FileStream Fs = new FileStream (fileName, FileMode.Open, FileAccess.Read);
 
-			Fs.Read (myBytes, 0, myBytes.Length);
+			while (totalAmountSend < totalSize) 
+			{
+				int bytesRead = Fs.Read (myBytes, 0, myBytes.Length);
 
-			io.Write (myBytes, 0, myBytes.Length);
+				io.Write (myBytes, 0, bytesRead);
+				totalAmountSend += bytesRead;
 
-			Console.WriteLine (myBytes.Length);
+				Console.WriteLine (bytesRead);
+			}
 			//tcp.LIB.writeTextTCP (io,streng);
-
+			Fs.Close();
 
 			// TO DO Your own code
 		}
