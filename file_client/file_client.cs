@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 
 
@@ -40,13 +41,13 @@ namespace tcp
 
 			//Skriv til server at vi ønsker den og den fil.
 			LIB.writeTextTCP (fileStream, args [1]);
-			string ModtagetStatus = LIB.readTextTCP (fileStream);
+			//string ModtagetStatus = LIB.readTextTCP (fileStream);
 
 			//reager på det der kommer tilbage, hvis det ikke er null. 
-			if(ModtagetStatus != null )
+			if(LIB.getFileSizeTCP(fileStream) != null)
 			{
 				receiveFile (args [1], fileStream);
-				Console.WriteLine("File Received");
+				Console.WriteLine("File Received: ");
 			}
 			else 
 			{
@@ -73,21 +74,31 @@ namespace tcp
 		/// </param>
 		private void receiveFile (String fileName, NetworkStream io)
 		{
+			//File.WriteAllText(fileName,LIB.readTextTCP(io);
+
+			int fileSize = (int)LIB.getFileSizeTCP (io);
+			Byte[] receivingBuffer = new byte[BUFSIZE];
+			Console.WriteLine (fileSize);
+			
+
+
+
 			FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
-		
-			int numberOfBytesToBeReceived = 0;
+			
+
 			int totalNumberOfReceivedBytes = 0;
-			Byte[] receivingBuffer = new byte[BUFSIZE]; 
-
-
 
 				// læs mens der stadig er ting tilbage
-				while ((numberOfBytesToBeReceived = io.Read(receivingBuffer, 0, receivingBuffer.Length)) > 0)
+			while (totalNumberOfReceivedBytes < fileSize)
 				{
-					DataWeWant.Write(receivingBuffer, 0, numberOfBytesToBeReceived);
-					totalNumberOfReceivedBytes += numberOfBytesToBeReceived;
-				}
+					int bytesRead = io.Read(receivingBuffer, 0, receivingBuffer.Length);
 
+					DataWeWant.Write(receivingBuffer, 0, bytesRead);
+					totalNumberOfReceivedBytes += bytesRead;
+
+					Array.Clear (receivingBuffer, 0, BUFSIZE);
+				}
+			
 			DataWeWant.Close ();
 			io.Close ();
 
