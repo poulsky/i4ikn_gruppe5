@@ -42,13 +42,13 @@ namespace tcp
 
 
 				//Besked læses, og data lægges i bytesFrom
-				string fileName = tcp.LIB.readTextTCP(inFromClient);
+				string fileName = tcp.LIB.readTextTCP (inFromClient);
 
 				Console.WriteLine ("Client request: " + fileName);
 
 				long fileSize = tcp.LIB.check_File_Exists (fileName);
 
-				string mySize = fileSize.ToString();
+				string mySize = fileSize.ToString ();
 
 				tcp.LIB.writeTextTCP (inFromClient, mySize);
 
@@ -60,12 +60,7 @@ namespace tcp
 				clientSocket.Close ();
 				welcomeScoket.Stop ();
 
-
-				//
 			}
-
-
-			// TO DO Your own code
 		}
 
 		/// <summary>
@@ -82,35 +77,25 @@ namespace tcp
 		/// </param>
 		private void sendFile (String fileName, long fileSize, NetworkStream io)
 		{
-			
-			//StreamReader Sr = new StreamReader (fileName);
 			int totalSize = (int)fileSize;
 			int totalAmountSend = 0;
-
-			//char[] myBuf = new char[CurrentLength];
-			//
-			//Sr.Read (myBuf, 0, CurrentLength);
-			//
-			//string streng = new string(myBuf);
-
-
 
 			byte[] myBytes = new byte[BUFSIZE];
 			FileStream Fs = new FileStream (fileName, FileMode.Open, FileAccess.Read);
 
 			while (totalAmountSend < totalSize) 
 			{
-				int bytesRead = Fs.Read (myBytes, 0, myBytes.Length);
+				int bytesRead = Fs.Read (myBytes, 0, BUFSIZE);
 
 				io.Write (myBytes, 0, bytesRead);
 				totalAmountSend += bytesRead;
 
 				Console.WriteLine (bytesRead);
 			}
-			//tcp.LIB.writeTextTCP (io,streng);
+
 			Fs.Close();
 
-			// TO DO Your own code
+		
 		}
 
 		/// <summary>
