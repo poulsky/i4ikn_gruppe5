@@ -42,17 +42,9 @@ namespace tcp
 			//Skriv til server at vi ønsker den og den fil.
 			LIB.writeTextTCP (fileStream, args [1]);
 			//string ModtagetStatus = LIB.readTextTCP (fileStream);
-
+			receiveFile (args [1], fileStream);
 			//reager på det der kommer tilbage, hvis det ikke er null. 
-			if(LIB.getFileSizeTCP(fileStream) != null)
-			{
-				receiveFile (args [1], fileStream);
-				Console.WriteLine("File Received: ");
-			}
-			else 
-			{
-				Console.WriteLine("No file found");
-			}
+
 
 			// luk forbindelsen.
 			fileStream.Close();
@@ -74,22 +66,19 @@ namespace tcp
 		/// </param>
 		private void receiveFile (String fileName, NetworkStream io)
 		{
-			//File.WriteAllText(fileName,LIB.readTextTCP(io);
-
 			int fileSize = (int)LIB.getFileSizeTCP (io);
-			Byte[] receivingBuffer = new byte[BUFSIZE];
-			Console.WriteLine (fileSize);
-			
+			//File.WriteAllText(fileName,LIB.readTextTCP(io);
+			if(fileSize > 0)
+			{
+				Byte[] receivingBuffer = new byte[BUFSIZE];
+				Console.WriteLine (fileSize);
+				FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
 
 
-
-			FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
-			
-
-			int totalNumberOfReceivedBytes = 0;
+				int totalNumberOfReceivedBytes = 0;
 
 				// læs mens der stadig er ting tilbage
-			while (totalNumberOfReceivedBytes < fileSize)
+				while (totalNumberOfReceivedBytes < fileSize)
 				{
 					int bytesRead = io.Read(receivingBuffer, 0, receivingBuffer.Length);
 
@@ -98,9 +87,23 @@ namespace tcp
 
 					Array.Clear (receivingBuffer, 0, BUFSIZE);
 				}
+
+				DataWeWant.Close ();
+				io.Close ();
+
+				Console.WriteLine("File Received: ");
+			}
+			else 
+			{
+				Console.WriteLine("No file found");
+			}
+
+
 			
-			DataWeWant.Close ();
-			io.Close ();
+
+
+
+
 
 		}
 
