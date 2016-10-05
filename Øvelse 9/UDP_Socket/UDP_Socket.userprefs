@@ -1,1 +1,1 @@
-﻿<Properties />
+﻿<Properties StartupItem="server/server.csproj" />
