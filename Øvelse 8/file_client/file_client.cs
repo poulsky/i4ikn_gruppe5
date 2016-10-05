@@ -91,7 +91,7 @@ namespace tcp
 				DataWeWant.Close ();
 				io.Close ();
 
-				Console.WriteLine("File Received: ");
+				Console.WriteLine("File Received: {0} Bytes", fileSize);
 			}
 			else 
 			{
