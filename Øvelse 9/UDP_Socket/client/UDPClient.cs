@@ -13,10 +13,10 @@ namespace client
 		{
 			bool done = true;
 			UdpClient listener = new UdpClient (Port);
-			IPEndPoint groupEP = new IPEndPoint (IPAddress.Any, Port);
+			IPEndPoint groupEP = new IPEndPoint (IPAddress.Parse("10.0.0.1"), Port);
 			string receivedData;
 			byte[] receiveByteArray;
-			byte[] request;
+			byte[] request = new byte[10];
 			string command;
 		
 
@@ -32,7 +32,7 @@ namespace client
 					Console.WriteLine("Enter command 'U' or 'L'");
 					command = Console.ReadLine();
 					request = Encoding.ASCII.GetBytes(command);
-					listener.Send (new byte[]{request[0]}, 1);
+					listener.Send (request, request.Length, groupEP);
 					done = false;
 
 
