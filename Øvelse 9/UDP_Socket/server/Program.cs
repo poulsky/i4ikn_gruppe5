@@ -17,6 +17,7 @@ namespace server
 			ipep = new IPEndPoint (IPAddress.Any, 9000);
 			socket = new UdpClient (ipep);
 			byte[] data = new byte[1000];
+			byte[] dataTBS = new byte[1000];
 
 			while (true) 
 			{
@@ -31,15 +32,17 @@ namespace server
 				{
 					//kode
 					FileStream uptime = new FileStream("/proc/uptime", FileMode.Open, FileAccess.Read);
-					int bytesRead = uptime.Read (data, 0, data.Length);
-					socket.Send (data, data.Length, sender);
+					int bytesRead = uptime.Read (dataTBS, 0, dataTBS.Length);
+
+					socket.Send (dataTBS, dataTBS.Length, sender);
+
 				} 
-				else if (cmd == "L" || cmd == "L") 
+				else if (cmd == "L" || cmd == "l") 
 				{
 					//kode
 					FileStream loadavg = new FileStream("/proc/loadavg", FileMode.Open, FileAccess.Read);
-					int bytesRead = loadavg.Read (data, 0, data.Length);
-					socket.Send (data, data.Length, sender);
+					int bytesRead = loadavg.Read (dataTBS, 0, dataTBS.Length);
+					socket.Send (dataTBS, dataTBS.Length, sender);
 				}
 				else 
 				{
