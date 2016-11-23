@@ -27,9 +27,18 @@ namespace Application
 		/// <param name='args'>
 		/// Filnavn med evtuelle sti.
 		/// </param>
-	    private file_client(String[] args)
+	    private file_client(String args)
 	    {
 	    	// TO DO Your own code
+			Transport t = new Transport(args.Length);
+			byte[] file = new byte[args.Length*sizeof(char)];
+			System.Buffer.BlockCopy (args.ToCharArray (), 0, file,0, file.Length);
+			//for (int i = 0; i > args.Length; i++) {
+			//	file [i] = Convert.ToByte(args [i]);
+			//}
+
+
+			t.send (file, file.Length);
 	    }
 
 		/// <summary>
@@ -54,10 +63,10 @@ namespace Application
 		/// </param>
 		public static void Main (string[] args)
 		{
-			new file_client(args);
-			byte[] file = new byte[100];
-			var link_layer_app = new Link (file.Length);
-			link_layer_app.send (file, file.Length);
+			var kf = "hest";
+			new file_client(kf);
+
+
 		}
 	}
 }
