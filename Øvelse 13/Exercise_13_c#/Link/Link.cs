@@ -59,14 +59,14 @@ namespace Linklaget
 			int j = 0;
 			for (int i = 0; i < size+1; i++) {
 				
-				if (buf [i] == 'A') {
-					buffer [j + 1] = 'B';
-					buffer [j + 2] = 'C';
-					j + 2;
-				} else if (buf [i] == 'B') {
-					buffer [j + 1] = 'B';
-					buffer [j + 2] = 'D';
-					j + 2;
+				if (buf [i] == Convert.ToByte('A')) {
+					buffer [j + 1] = Convert.ToByte('B');
+					buffer [j + 2] = Convert.ToByte('C');
+					j += 2;
+				} else if (buf [i] == Convert.ToByte('B')) {
+					buffer [j + 1] = Convert.ToByte('B');
+					buffer [j + 2] = Convert.ToByte('D');
+					j += 2;
 				} else {
 					buffer [j+1] = buf [i];
 					j++;
@@ -96,23 +96,26 @@ namespace Linklaget
 			int j = 0;
 	    	// TO DO Your own code
 			for (int i = 1; i < buf.Length; i++) {
-				if (buf [i] == 'B') {
-					if (buf [i + 1] == 'C') {
-						buffer [j] = 'A';
+				if (buf [i] == Convert.ToByte('B')) {
+					if (buf [i + 1] == Convert.ToByte('C')) {
+						buffer [j] = Convert.ToByte ('A');
 						i++;
-					} else if (buf [i + 1] == 'D') {
-						buffer [j] = 'B';
+					} else if (buf [i + 1] == Convert.ToByte('D')) {
+						buffer [j] = Convert.ToByte ('B');
 						i++;
-					}						
+					}
 
-				} else
+
+				} else if (buf [i] == Convert.ToByte('A'))
+					break;
+				else
 					buffer [j] = buf [i];
 				j++;
 
 
 			}
-			buffer [j] = null;
-			transport.send (buffer);
+			//buffer [j] = Convert.ToByte('A');
+			//transport.send (buffer);
 			return buffer.Length;
 		}
 	}

@@ -1,0 +1,27 @@
+﻿<Properties StartupItem="file_server/file_server.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="file_client/file_client.cs">
+    <Files>
+      <File FileName="Link/Link.cs" Line="7" Column="11" />
+      <File FileName="file_client/file_client.cs" Line="6" Column="17" />
+      <File FileName="Transport/Transport.cs" Line="117" Column="25" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Exercise_13_c#" expanded="True">
+            <Node name="file_client" expanded="True">
+              <Node name="References" expanded="True" selected="True" />
+            </Node>
+            <Node name="Link" expanded="True" />
+            <Node name="Transport" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
