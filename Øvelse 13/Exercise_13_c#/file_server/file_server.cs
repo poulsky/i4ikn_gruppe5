@@ -27,8 +27,28 @@ namespace Application
 			//	file [i] = Convert.ToByte(args [i]);
 			//}
 
-
 			t.send (file, file.Length);
+
+			/*
+			Transport transport = new Transport (BUFSIZE);
+			while (true) {
+				Console.WriteLine ("Server started!");
+
+				// receive request on file name
+				var size = t.receive(buffer);
+				if (size != 0) {
+					// Sender en ACK her måske?
+					var fileNamePath = System.Text.Encoding.Default.GetString (buffer);
+					var fileName = LIB.extractFileName (fileNamePath);
+					var fileSize = LIB.check_File_Exists (fileName);
+
+					if (fileSize != 0)
+						sendFile (fileName, fileSize, transport);
+					else
+						Console.WriteLine ("File does not exist.");
+				}
+			}
+			*/
 		}
 
 		/// <summary>
