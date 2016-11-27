@@ -57,7 +57,7 @@ namespace Linklaget
 			int sendBufSize = 0;
 			buffer [0] = DELIMITER;
 			int j = 0;
-			for (int i = 0; i < size+1; i++) {
+			for (int i = 0; i < size; i++) {
 				
 				if (buf [i] == Convert.ToByte('A')) {
 					buffer [j + 1] = Convert.ToByte('B');
