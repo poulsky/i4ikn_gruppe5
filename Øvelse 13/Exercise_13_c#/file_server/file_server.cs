@@ -19,6 +19,16 @@ namespace Application
 		private file_server ()
 		{
 			// TO DO Your own code
+			string args = "hest";
+			Transport t = new Transport(args.Length);
+			byte[] file = new byte[args.Length*sizeof(char)];
+			System.Buffer.BlockCopy (args.ToCharArray (), 0, file,0, file.Length);
+			//for (int i = 0; i > args.Length; i++) {
+			//	file [i] = Convert.ToByte(args [i]);
+			//}
+
+
+			t.send (file, file.Length);
 		}
 
 		/// <summary>

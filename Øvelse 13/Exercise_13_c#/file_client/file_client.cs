@@ -30,15 +30,28 @@ namespace Application
 	    private file_client(String args)
 	    {
 	    	// TO DO Your own code
-			Transport t = new Transport(args.Length);
-			byte[] file = new byte[args.Length*sizeof(char)];
-			System.Buffer.BlockCopy (args.ToCharArray (), 0, file,0, file.Length);
+			/*
+			Transport t = new Transport (args.Length);
+			byte[] file = new byte[args.Length * sizeof(char)];
+			System.Buffer.BlockCopy (args.ToCharArray (), 0, file, 0, file.Length);
 			//for (int i = 0; i > args.Length; i++) {
 			//	file [i] = Convert.ToByte(args [i]);
 			//}
 
 
 			t.send (file, file.Length);
+			*/
+			var receivebuf = new byte[1000];
+			string output;
+			var t = new Transport (1000);
+			while (true) {
+				var n = t.receive (ref receivebuf);
+				if (n != 0) {
+					output = System.Text.Encoding.Default.GetString (receivebuf);
+					Console.WriteLine (output);
+				}
+			}
+
 	    }
 
 		/// <summary>
