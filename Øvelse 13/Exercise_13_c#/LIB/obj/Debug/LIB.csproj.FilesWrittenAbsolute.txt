@@ -4,3 +4,9 @@
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/obj/Debug/LIB.dll
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/obj/Debug/LIB.dll.mdb
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/bin/Debug/System.dll
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/bin/Debug/LIB.dll.mdb
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/bin/Debug/LIB.dll
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/obj/Debug/LIB.dll
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/obj/Debug/LIB.dll.mdb
+/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/LIB/bin/Debug/System.dll

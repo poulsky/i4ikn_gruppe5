@@ -51,6 +51,24 @@ namespace Application
 					Console.WriteLine (output);
 				}
 			}
+			/*Console.WriteLine ("trying to connect...");
+
+			//etabler tcp forbindelsen
+			Transport TransportClient = new Transport (BUFSIZE);
+
+
+			//sæt streameren til at snakke på den nu åbne tcp connection
+			byte[] requestByte = Convert.ToByte(args [0]);
+			//Skriv til server at vi ønsker den og den fil.
+			TransportClient.send (requestByte, requestByte.Length);
+			//string ModtagetStatus = LIB.readTextTCP (fileStream);
+			receiveFile (args [1], fileStream);
+			//reager på det der kommer tilbage, hvis det ikke er null. 
+
+
+			// luk forbindelsen.
+			fileStream.Close();
+			NyTcpSocket.Close();*/
 
 	    }
 

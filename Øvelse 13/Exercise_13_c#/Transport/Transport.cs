@@ -97,12 +97,25 @@ namespace Transportlaget
 		/// <param name='buffer'>
 		/// Buffer.
 		/// </param>
-		/// <param name='size'>
+		/// <param name='size'> 
 		/// Size.
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
+			checksum.calcChecksum (ref buf, size);
+
 			link.send (buf, size);
+
+
+			for(int i = 0 ; i<5 ; i++)
+			{
+				if (receiveAck())
+					break;
+				else
+				{
+					link.send (buf, size);
+				}
+			}
 		}
 
 		/// <summary>
@@ -113,8 +126,13 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
+			int n = 0;
 			// TO DO Your own code
-			int n = link.receive(ref buf);
+			do {
+				 n = link.receive (ref buf);
+				sendAck (checksum.checkChecksum (buf, buf.Length));
+			} while(!checksum.checkChecksum (buf, buf.Length));
+
 			return n;
 		}
 	}
