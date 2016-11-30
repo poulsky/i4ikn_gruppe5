@@ -5,10 +5,3 @@
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Debug/Transport.dll.mdb
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Link.dll
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Link.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Debug/Transport.dll
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Debug/Transport.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Link.dll
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Link.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Transport.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Debug/Transport.dll

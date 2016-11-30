@@ -27,7 +27,7 @@ namespace Application
 		/// <param name='args'>
 		/// Filnavn med evtuelle sti.
 		/// </param>
-	    private file_client(String args)
+	    private file_client(String[] args)
 	    {
 	    	// TO DO Your own code
 			/*
@@ -40,7 +40,7 @@ namespace Application
 
 
 			t.send (file, file.Length);
-			*/
+
 			var receivebuf = new byte[1000];
 			string output;
 			var t = new Transport (1000);
@@ -50,25 +50,28 @@ namespace Application
 					output = System.Text.Encoding.Default.GetString (receivebuf);
 					Console.WriteLine (output);
 				}
-			}
-			/*Console.WriteLine ("trying to connect...");
+			}*/
+
+			Console.WriteLine ("trying to connect...");
 
 			//etabler tcp forbindelsen
 			Transport TransportClient = new Transport (BUFSIZE);
 
 
 			//sæt streameren til at snakke på den nu åbne tcp connection
-			byte[] requestByte = Convert.ToByte(args [0]);
+
+			byte[] requestByte = new byte[BUFSIZE];
+		
+			System.Buffer.BlockCopy (args[0].ToCharArray (), 0, requestByte,0, requestByte.Length);
 			//Skriv til server at vi ønsker den og den fil.
 			TransportClient.send (requestByte, requestByte.Length);
 			//string ModtagetStatus = LIB.readTextTCP (fileStream);
-			receiveFile (args [1], fileStream);
+			receiveFile (args [1], TransportClient);
 			//reager på det der kommer tilbage, hvis det ikke er null. 
 
 
 			// luk forbindelsen.
-			fileStream.Close();
-			NyTcpSocket.Close();*/
+
 
 	    }
 
@@ -84,6 +87,42 @@ namespace Application
 		private void receiveFile (String fileName, Transport transport)
 		{
 			// TO DO Your own code
+			//int fileSize = (int)LIB.getFileSizeTCP (io);
+			byte[] ReceiveSize = new byte[BUFSIZE];
+			var FileSize = transport.receive (ref ReceiveSize);
+			var stringSize = ReceiveSize.ToString();
+			var fileSize = int.Parse(stringSize);
+
+			//File.WriteAllText(fileName,LIB.readTextTCP(io);
+			if(fileSize > 0)
+			{
+				Byte[] receivingBuffer = new byte[BUFSIZE];
+				Console.WriteLine (fileSize);
+				FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
+
+
+				int totalNumberOfReceivedBytes = 0;
+
+				// læs mens der stadig er ting tilbage
+				while (totalNumberOfReceivedBytes < fileSize)
+				{
+					int bytesRead = transport.receive(ref receivingBuffer);
+
+					DataWeWant.Write(receivingBuffer, 0, bytesRead);
+					totalNumberOfReceivedBytes += bytesRead;
+
+					Array.Clear (receivingBuffer, 0, BUFSIZE);
+				}
+
+				DataWeWant.Close ();
+
+
+				Console.WriteLine("File Received: {0} Bytes", fileSize);
+			}
+			else 
+			{
+				Console.WriteLine("No file found");
+			}
 		}
 
 		/// <summary>
@@ -94,8 +133,8 @@ namespace Application
 		/// </param>
 		public static void Main (string[] args)
 		{
-			var kf = "hest";
-			new file_client(kf);
+			
+			new file_client(args);
 
 
 		}

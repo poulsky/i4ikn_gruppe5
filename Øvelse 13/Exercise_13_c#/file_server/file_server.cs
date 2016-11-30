@@ -18,6 +18,7 @@ namespace Application
 		/// </summary>
 		private file_server ()
 		{
+			/*
 			// TO DO Your own code
 			string args = "hest";
 			Transport t = new Transport(args.Length);
@@ -28,19 +29,24 @@ namespace Application
 			//}
 
 			t.send (file, file.Length);
+			*/
+			Console.WriteLine ("Server started!");
 
-			/*
+			byte[] buffer = new byte[BUFSIZE];
 			Transport transport = new Transport (BUFSIZE);
-			while (true) {
-				Console.WriteLine ("Server started!");
-
-				// receive request on file name
-				var size = t.receive(buffer);
-				if (size != 0) {
-					// Sender en ACK her måske?
+			while (true) 
+			{
+				var size = transport.receive(ref buffer);
+				if (size != 0) 
+				{
 					var fileNamePath = System.Text.Encoding.Default.GetString (buffer);
 					var fileName = LIB.extractFileName (fileNamePath);
 					var fileSize = LIB.check_File_Exists (fileName);
+
+					var mySize = fileSize.ToString ();
+					byte[] sendfileSize = new byte[mySize.Length];
+					System.Buffer.BlockCopy (mySize.ToCharArray (), 0, sendfileSize, 0, mySize.Length);
+					transport.send (sendfileSize, sendfileSize.Length);
 
 					if (fileSize != 0)
 						sendFile (fileName, fileSize, transport);
@@ -48,7 +54,7 @@ namespace Application
 						Console.WriteLine ("File does not exist.");
 				}
 			}
-			*/
+
 		}
 
 		/// <summary>
@@ -66,6 +72,23 @@ namespace Application
 		private void sendFile(String fileName, long fileSize, Transport transport)
 		{
 			// TO DO Your own code
+			int totalSize = (int)fileSize;
+			int totalAmountSend = 0;
+
+			byte[] myBytes = new byte[BUFSIZE];
+			FileStream Fs = new FileStream (fileName, FileMode.Open, FileAccess.Read);
+
+			while (totalAmountSend < totalSize) 
+			{
+				int bytesRead = Fs.Read (myBytes, 0, BUFSIZE);
+
+				transport.send (myBytes, bytesRead);
+				totalAmountSend += bytesRead;
+
+				Console.WriteLine (bytesRead);
+			}
+
+			Fs.Close();
 		}
 
 		/// <summary>

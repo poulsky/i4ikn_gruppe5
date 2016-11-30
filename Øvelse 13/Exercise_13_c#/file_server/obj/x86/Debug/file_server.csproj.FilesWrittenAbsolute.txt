@@ -9,14 +9,3 @@
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/LIB.dll.mdb
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Link.dll
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Link.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/file_server.exe.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/file_server.exe
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/obj/x86/Debug/file_server.exe
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/obj/x86/Debug/file_server.exe.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Transport.dll
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Transport.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/LIB.dll
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/LIB.dll.mdb
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Link.dll
-/root/Documents/GitExercise8/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/bin/Debug/Link.dll.mdb
