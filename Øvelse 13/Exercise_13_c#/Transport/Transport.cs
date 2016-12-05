@@ -102,9 +102,13 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			checksum.calcChecksum (ref buf, size);
+			Array.Copy (buf, 0, buffer, 4, size + (int)TransSize.ACKSIZE);
+			buffer [2] = seqNo;
+			buffer [3] = (byte)0;
+			checksum.calcChecksum (ref buffer, buffer.Length);
 
-			link.send (buf, size);
+
+			link.send (buffer, buffer.Length);
 
 
 			for(int i = 0 ; i<5 ; i++)
@@ -113,9 +117,10 @@ namespace Transportlaget
 					break;
 				else
 				{
-					link.send (buf, size);
+					link.send (buffer, buffer.Length);
 				}
 			}
+			old_seqNo = DEFAULT_SEQNO;
 		}
 
 		/// <summary>
@@ -128,12 +133,19 @@ namespace Transportlaget
 		{
 			int n = 0;
 			// TO DO Your own code
+			 
 			do {
-				 n = link.receive (ref buf);
-				sendAck (checksum.checkChecksum (buf, buf.Length));
-			} while(!checksum.checkChecksum (buf, buf.Length));
+				if(!old_seqNo == buf[2])
+					
+				 	n = link.receive (ref buffer);
+				old_seqNo = buf[2];
+				sendAck (checksum.checkChecksum (buffer, buffer.Length));
 
-			return n;
+			} while(!checksum.checkChecksum (buffer, buffer.Length));
+			Array.Copy (buffer, 4, buf, 0, buf.Length);
+
+
+			return n-(int)TransSize.ACKSIZE;
 		}
 	}
 }

@@ -45,7 +45,8 @@ namespace Application
 
 					var mySize = fileSize.ToString ();
 					byte[] sendfileSize = new byte[mySize.Length];
-					System.Buffer.BlockCopy (mySize.ToCharArray (), 0, sendfileSize, 0, mySize.Length);
+					sendfileSize = Encoding.ASCII.GetBytes (mySize);
+
 					transport.send (sendfileSize, sendfileSize.Length);
 
 					if (fileSize != 0)

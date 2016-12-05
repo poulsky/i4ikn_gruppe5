@@ -61,8 +61,8 @@ namespace Application
 			//sæt streameren til at snakke på den nu åbne tcp connection
 
 			byte[] requestByte = new byte[BUFSIZE];
-		
-			System.Buffer.BlockCopy (args[0].ToCharArray (), 0, requestByte,0, requestByte.Length);
+			requestByte = Encoding.ASCII.GetBytes (args [0]);
+
 			//Skriv til server at vi ønsker den og den fil.
 			TransportClient.send (requestByte, requestByte.Length);
 			//string ModtagetStatus = LIB.readTextTCP (fileStream);
