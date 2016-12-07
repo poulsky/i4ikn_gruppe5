@@ -133,7 +133,8 @@ namespace Application
 		/// </param>
 		public static void Main (string[] args)
 		{
-			
+			args = new string[2];
+			args[0] = "/root/cat.jpg";
 			new file_client(args);
 
 

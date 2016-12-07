@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using Linklaget;
+using System.Text;
 
 /// <summary>
 /// Transport.
@@ -111,6 +112,8 @@ namespace Transportlaget
 			var line = Encoding.ASCII.GetString (buffer);
 			Console.WriteLine (line);
 
+			var line = Encoding.ASCII.GetString (buffer);
+			Console.WriteLine (line);
 			link.send (buffer, buffer.Length);
 
 

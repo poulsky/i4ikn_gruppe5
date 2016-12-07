@@ -1,7 +1,8 @@
-﻿<Properties StartupItem="file_server/file_server.csproj">
+﻿<Properties StartupItem="file_client/file_client.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="file_server/file_server.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Link/Link.cs" Line="119" Column="4" />
       <File FileName="file_client/file_client.cs" Line="64" Column="4" />
       <File FileName="file_server/file_server.cs" Line="42" Column="32" />
@@ -31,6 +32,20 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/file_server.cs" line="44" column="1" />
+=======
+      <File FileName="Link/Link.cs" Line="2" Column="19" />
+      <File FileName="file_client/file_client.cs" Line="67" Column="1" />
+      <File FileName="Transport/Transport.cs" Line="3" Column="19" />
+      <File FileName="file_server/file_server.cs" Line="1" Column="1" />
+      <File FileName="Transport/TransConst.cs" Line="1" Column="1" />
+      <File FileName="Transport/Checksum.cs" Line="40" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/file_client.cs" line="64" column="1" />
+      <Breakpoint file="/root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/file_client.cs" line="67" column="1" />
+>>>>>>> 85a5bae0c45e19f55eb2f267747ba4a0ba16f03d
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
