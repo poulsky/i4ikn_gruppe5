@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.IO.Ports;
 
 /// <summary>
@@ -97,7 +98,7 @@ namespace Linklaget
 
 			int j = 0;
 	    	// TO DO Your own code
-			for (int i = 1; i < buffer.Length; i++) {
+			for (int i = 1; i < buf.Length; i++) {
 				if (buffer [i] == Convert.ToByte('B')) {
 					if (buffer [i + 1] == Convert.ToByte('C')) {
 						buf [j] = Convert.ToByte ('A');
@@ -116,6 +117,8 @@ namespace Linklaget
 
 
 			}
+			var line = Encoding.ASCII.GetString (buf);
+			Console.WriteLine (line);
 			//buffer [j] = Convert.ToByte('A');
 			//transport.send (buffer);
 			return buf.Length;

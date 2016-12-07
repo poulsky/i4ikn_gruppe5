@@ -1,18 +1,26 @@
 ﻿<Properties StartupItem="file_server/file_server.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="file_client/file_client.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="file_server/file_server.cs">
     <Files>
-      <File FileName="Link/Link.cs" Line="7" Column="11" />
-      <File FileName="file_client/file_client.cs" Line="6" Column="17" />
-      <File FileName="Transport/Transport.cs" Line="117" Column="25" />
+      <File FileName="Link/Link.cs" Line="119" Column="4" />
+      <File FileName="file_client/file_client.cs" Line="64" Column="4" />
+      <File FileName="file_server/file_server.cs" Line="42" Column="32" />
+      <File FileName="Transport/Transport.cs" Line="112" Column="29" />
+      <File FileName="Transport/Checksum.cs" Line="39" Column="11" />
+      <File FileName="LIB/LIB.cs" Line="1" Column="1" />
+      <File FileName="Transport/TransConst.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Exercise_13_c#" expanded="True">
             <Node name="file_client" expanded="True">
-              <Node name="References" expanded="True" selected="True" />
+              <Node name="References" expanded="True" />
             </Node>
+            <Node name="file_server" expanded="True">
+              <Node name="file_server.cs" selected="True" />
+            </Node>
+            <Node name="LIB" expanded="True" />
             <Node name="Link" expanded="True" />
             <Node name="Transport" expanded="True" />
           </Node>
@@ -21,7 +29,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_server/file_server.cs" line="44" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

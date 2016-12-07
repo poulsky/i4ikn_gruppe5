@@ -39,6 +39,7 @@ namespace Application
 				var size = transport.receive(ref buffer);
 				if (size != 0) 
 				{
+					//fjern null efter filnavn
 					var fileNamePath = System.Text.Encoding.Default.GetString (buffer);
 					var fileName = LIB.extractFileName (fileNamePath);
 					var fileSize = LIB.check_File_Exists (fileName);

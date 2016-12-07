@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Linklaget;
 
 /// <summary>
@@ -102,11 +103,13 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			Array.Copy (buf, 0, buffer, 4, size + (int)TransSize.ACKSIZE);
+			Array.Copy (buf, 0, buffer, 4, size);
 			buffer [2] = seqNo;
 			buffer [3] = (byte)0;
 			checksum.calcChecksum (ref buffer, buffer.Length);
 
+			var line = Encoding.ASCII.GetString (buffer);
+			Console.WriteLine (line);
 
 			link.send (buffer, buffer.Length);
 
@@ -135,13 +138,14 @@ namespace Transportlaget
 			// TO DO Your own code
 			 
 			do {
-				if(!old_seqNo == buf[2])
+				if(!(old_seqNo == buffer[2]))
 					
 				 	n = link.receive (ref buffer);
-				old_seqNo = buf[2];
+				old_seqNo = buffer[2];
 				sendAck (checksum.checkChecksum (buffer, buffer.Length));
 
 			} while(!checksum.checkChecksum (buffer, buffer.Length));
+
 			Array.Copy (buffer, 4, buf, 0, buf.Length);
 
 
