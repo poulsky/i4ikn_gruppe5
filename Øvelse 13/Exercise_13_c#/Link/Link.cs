@@ -60,7 +60,7 @@ namespace Linklaget
 			buffer [0] = DELIMITER;
 			int j = 0;
 			for (int i = 0; i < size; i++) {
-				
+
 				if (buf [i] == Convert.ToByte('A')) {
 					buffer [j + 1] = Convert.ToByte('B');
 					buffer [j + 2] = Convert.ToByte('C');
@@ -73,7 +73,7 @@ namespace Linklaget
 					buffer [j+1] = buf [i];
 					j++;
 				}
-				
+
 			}
 			buffer [j+1] = DELIMITER;
 
@@ -92,13 +92,28 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-			if (buffer != null)
+			byte b;
+			do {
+				b = (byte)serialPort.ReadByte ();
+
+			} while(b != DELIMITER);
+
+			int x = 0;
+
+			do {
+				b = (byte)serialPort.ReadByte ();
+				buffer [x] = b;
+				x++;
+			} while(b != DELIMITER);
+
+
+			/*if (buffer != null)
 				Array.Clear (buffer, 0, buffer.Length);
-			serialPort.Read (buffer, 0, buffer.Length);
+			serialPort.Read (buffer, 0, buffer.Length);*/
 
 			int j = 0;
-	    	// TO DO Your own code
-			for (int i = 1; i < buf.Length; i++) {
+			// TO DO Your own code
+			for (int i = 0; i < x; i++) {
 				if (buffer [i] == Convert.ToByte('B')) {
 					if (buffer [i + 1] == Convert.ToByte('C')) {
 						buf [j] = Convert.ToByte ('A');
@@ -121,7 +136,7 @@ namespace Linklaget
 			Console.WriteLine (line);
 			//buffer [j] = Convert.ToByte('A');
 			//transport.send (buffer);
-			return buf.Length;
+			return j;
 		}
 	}
 }

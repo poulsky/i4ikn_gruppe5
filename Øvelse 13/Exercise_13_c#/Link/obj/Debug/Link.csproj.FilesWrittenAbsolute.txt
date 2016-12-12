@@ -3,3 +3,8 @@
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/bin/Debug/Link.dll
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Debug/Link.dll
 /root/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Debug/Link.dll.mdb
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/bin/Debug/Link.dll.mdb
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/bin/Debug/Link.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Debug/Link.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Debug/Link.dll.mdb

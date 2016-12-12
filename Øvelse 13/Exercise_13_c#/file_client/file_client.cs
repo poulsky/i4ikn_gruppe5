@@ -55,8 +55,8 @@ namespace Application
 			Console.WriteLine ("trying to connect...");
 
 			//etabler tcp forbindelsen
-			Transport TransportClient = new Transport (BUFSIZE);
-
+			Link TransportClient = new Link(BUFSIZE);
+		
 
 			//sæt streameren til at snakke på den nu åbne tcp connection
 
@@ -66,7 +66,7 @@ namespace Application
 			//Skriv til server at vi ønsker den og den fil.
 			TransportClient.send (requestByte, requestByte.Length);
 			//string ModtagetStatus = LIB.readTextTCP (fileStream);
-			receiveFile (args [1], TransportClient);
+			receiveFile (args [0], TransportClient);
 			//reager på det der kommer tilbage, hvis det ikke er null. 
 
 
@@ -84,14 +84,17 @@ namespace Application
 		/// <param name='transport'>
 		/// Transportlaget
 		/// </param>
-		private void receiveFile (String fileName, Transport transport)
+		private void receiveFile (String fileName, Link transport)
 		{
 			// TO DO Your own code
 			//int fileSize = (int)LIB.getFileSizeTCP (io);
 			byte[] ReceiveSize = new byte[BUFSIZE];
 			var FileSize = transport.receive (ref ReceiveSize);
-			var stringSize = ReceiveSize.ToString();
+			//var stringSize = ReceiveSize.ToString();
+			var stringSize = System.Text.Encoding.Default.GetString (ReceiveSize);
 			var fileSize = int.Parse(stringSize);
+
+
 
 			//File.WriteAllText(fileName,LIB.readTextTCP(io);
 			if(fileSize > 0)
@@ -99,6 +102,7 @@ namespace Application
 				Byte[] receivingBuffer = new byte[BUFSIZE];
 				Console.WriteLine (fileSize);
 				FileStream DataWeWant = new FileStream(fileName,FileMode.Create,FileAccess.Write);
+
 
 
 				int totalNumberOfReceivedBytes = 0;

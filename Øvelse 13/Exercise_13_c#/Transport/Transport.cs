@@ -119,12 +119,10 @@ namespace Transportlaget
 			Console.WriteLine (line);
 			link.send (buffer, buffer.Length);
 
-
+				errorCount++;
 			
-			
-				
-			
-			}while(!receiveAck());
+			}while(!receiveAck() && errorCount<=5);
+			errorCount = 0;
 			old_seqNo = DEFAULT_SEQNO;
 		}
 

@@ -1,0 +1,4 @@
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Release/Transport.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/obj/Release/Transport.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Transport/bin/Release/Link.dll

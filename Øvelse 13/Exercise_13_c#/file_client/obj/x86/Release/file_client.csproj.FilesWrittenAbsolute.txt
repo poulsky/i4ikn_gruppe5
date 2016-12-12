@@ -1,0 +1,6 @@
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/bin/Release/file_client.exe
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/obj/x86/Release/file_client.exe
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/bin/Release/LIB.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/bin/Release/Transport.dll
+/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/file_client/bin/Release/Link.dll
