@@ -42,6 +42,7 @@ namespace Application
 					//fjern null efter filnavn
 					var fileNamePath = System.Text.Encoding.Default.GetString (buffer);
 					var fileName = LIB.extractFileName (fileNamePath);
+					fileName = fileName.Replace ("\0", string.Empty);
 					var fileSize = LIB.check_File_Exists (fileName);
 
 					var mySize = fileSize.ToString ();

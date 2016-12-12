@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="file_client/file_client.csproj">
+﻿<Properties StartupItem="file_server/file_server.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Link/TestSlip.cs">
     <Files>
