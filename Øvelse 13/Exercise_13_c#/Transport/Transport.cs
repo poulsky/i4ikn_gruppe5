@@ -104,6 +104,9 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
+
+			do
+			{
 			Array.Copy (buf, 0, buffer, 4, size);
 			buffer [2] = seqNo;
 			buffer [3] = (byte)0;
@@ -112,20 +115,16 @@ namespace Transportlaget
 			var line = Encoding.ASCII.GetString (buffer);
 			Console.WriteLine (line);
 
-			var line = Encoding.ASCII.GetString (buffer);
+
 			Console.WriteLine (line);
 			link.send (buffer, buffer.Length);
 
 
-			for(int i = 0 ; i<5 ; i++)
-			{
-				if (receiveAck())
-					break;
-				else
-				{
-					link.send (buffer, buffer.Length);
-				}
-			}
+			
+			
+				
+			
+			}while(!receiveAck());
 			old_seqNo = DEFAULT_SEQNO;
 		}
 
@@ -141,16 +140,19 @@ namespace Transportlaget
 			// TO DO Your own code
 			 
 			do {
-				if(!(old_seqNo == buffer[2]))
+				
 					
 				 	n = link.receive (ref buffer);
-				old_seqNo = buffer[2];
+
 				sendAck (checksum.checkChecksum (buffer, buffer.Length));
 
 			} while(!checksum.checkChecksum (buffer, buffer.Length));
 
-			Array.Copy (buffer, 4, buf, 0, buf.Length);
-
+			if (!(old_seqNo == buffer [2])) 
+			{
+				Array.Copy (buffer, 4, buf, 0, buf.Length);
+				old_seqNo = buffer [2];
+			}
 
 			return n-(int)TransSize.ACKSIZE;
 		}
