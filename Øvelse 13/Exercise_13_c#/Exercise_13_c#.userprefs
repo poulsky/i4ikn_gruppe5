@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿<Properties StartupItem="file_client/file_client.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Transport/Transport.cs">
+=======
+﻿<Properties StartupItem="file_server/file_server.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Link/TestSlip.cs">
+>>>>>>> 317badfe36680a71b8a6b5002f2b91d1b5e93ab0
     <Files>
       <File FileName="Transport/Transport.cs" Line="141" Column="14" />
       <File FileName="Transport/Checksum.cs" Line="27" Column="1" />
