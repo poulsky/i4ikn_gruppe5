@@ -92,6 +92,9 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
+			if (buffer != null)
+				Array.Clear (buffer, 0, buffer.Length);
+
 			byte b;
 			do {
 				b = (byte)serialPort.ReadByte ();
@@ -133,7 +136,7 @@ namespace Linklaget
 
 			}
 			var line = Encoding.ASCII.GetString (buf);
-			Console.WriteLine (line);
+
 			//buffer [j] = Convert.ToByte('A');
 			//transport.send (buffer);
 			return j;

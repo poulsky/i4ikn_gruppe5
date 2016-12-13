@@ -104,7 +104,8 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-
+			if (buffer != null)
+				Array.Clear (buffer, 0, buffer.Length);
 			do
 			{
 			Array.Copy (buf, 0, buffer, 4, size);
@@ -116,7 +117,7 @@ namespace Transportlaget
 			Console.WriteLine (line);
 
 
-			Console.WriteLine (line);
+			
 			link.send (buffer, buffer.Length);
 
 				errorCount++;
@@ -134,23 +135,27 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
+			if (buffer != null)
+				Array.Clear (buffer, 0, buffer.Length);
+			
 			int n = 0;
 			// TO DO Your own code
-			 
+			bool ack;
+
 			do {
 				
 					
 				 	n = link.receive (ref buffer);
+				ack = checksum.checkChecksum (buffer, buffer.Length);
+				sendAck (ack);
 
-				sendAck (checksum.checkChecksum (buffer, buffer.Length));
+			} while(!ack);
 
-			} while(!checksum.checkChecksum (buffer, buffer.Length));
-
-			if (!(old_seqNo == buffer [2])) 
-			{
+			if (old_seqNo != buffer [2]) {
 				Array.Copy (buffer, 4, buf, 0, buf.Length);
 				old_seqNo = buffer [2];
 			}
+
 
 			return n-(int)TransSize.ACKSIZE;
 		}
