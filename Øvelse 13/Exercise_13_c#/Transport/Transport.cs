@@ -72,7 +72,8 @@ namespace Transportlaget
 				return false;
 			
 			seqNo = (byte)((buf[(int)TransCHKSUM.SEQNO] + 1) % 2);
-			
+
+
 			return true;
 		}
 
@@ -90,6 +91,12 @@ namespace Transportlaget
 			ackBuf [(int)TransCHKSUM.TYPE] = (byte)(int)TransType.ACK;
 			checksum.calcChecksum (ref ackBuf, (int)TransSize.ACKSIZE);
 
+			/*if (errorCount == 4) {
+				ackBuf [0]++;
+			}
+			errorCount++;*/
+
+
 			link.send(ackBuf, (int)TransSize.ACKSIZE);
 		}
 
@@ -104,6 +111,8 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
+			if (buffer != null)
+				Array.Clear (buffer, 0, buffer.Length);
 
 			do
 			{
@@ -114,15 +123,20 @@ namespace Transportlaget
 
 			var line = Encoding.ASCII.GetString (buffer);
 			Console.WriteLine (line);
-
+				/*if(errorCount == 3)
+				{
+					for(int k = 5; k<100;k++)	
+						buffer[k] = (byte)'A';
+				}*/
 
 			Console.WriteLine (line);
-			link.send (buffer, buffer.Length);
+				link.send (buffer, size+4);
 
 				errorCount++;
+
 			
-			}while(!receiveAck() && errorCount<=5);
-			errorCount = 0;
+			}while(!receiveAck());
+
 			old_seqNo = DEFAULT_SEQNO;
 		}
 
@@ -134,6 +148,9 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
+			if (buffer != null)
+				Array.Clear (buffer, 0, buffer.Length);
+
 			int n = 0;
 			// TO DO Your own code
 			 
@@ -148,7 +165,7 @@ namespace Transportlaget
 
 			if (!(old_seqNo == buffer [2])) 
 			{
-				Array.Copy (buffer, 4, buf, 0, buf.Length);
+				Array.Copy (buffer, 4, buf, 0, n-4);
 				old_seqNo = buffer [2];
 			}
 
