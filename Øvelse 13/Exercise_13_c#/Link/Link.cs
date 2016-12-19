@@ -136,7 +136,7 @@ namespace Linklaget
 
 			}
 			var line = Encoding.ASCII.GetString (buf);
-			Console.WriteLine (line);
+
 			//buffer [j] = Convert.ToByte('A');
 			//transport.send (buffer);
 			return j;

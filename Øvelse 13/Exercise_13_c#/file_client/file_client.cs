@@ -55,7 +55,7 @@ namespace Application
 			Console.WriteLine ("trying to connect...");
 
 			//etabler tcp forbindelsen
-			Link TransportClient = new Link(BUFSIZE);
+			Transport TransportClient = new Transport(BUFSIZE);
 		
 
 			//sæt streameren til at snakke på den nu åbne tcp connection
@@ -84,8 +84,9 @@ namespace Application
 		/// <param name='transport'>
 		/// Transportlaget
 		/// </param>
-		private void receiveFile (String fileName, Link transport)
+		private void receiveFile (String fileName, Transport transport)
 		{
+			
 			// TO DO Your own code
 			//int fileSize = (int)LIB.getFileSizeTCP (io);
 			byte[] ReceiveSize = new byte[BUFSIZE];

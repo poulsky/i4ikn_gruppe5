@@ -1,3 +1,0 @@
-/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/bin/Release/Link.dll
-/root/Desktop/i4ikn_gruppe5/Øvelse 13/Exercise_13_c#/Link/obj/Release/Link.dll

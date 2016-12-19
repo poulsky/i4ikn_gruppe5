@@ -113,7 +113,10 @@ namespace Transportlaget
 		{
 			if (buffer != null)
 				Array.Clear (buffer, 0, buffer.Length);
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7cc1fa92c65bb4921730215646917d258cab5a7
 			do
 			{
 			Array.Copy (buf, 0, buffer, 4, size);
@@ -129,8 +132,13 @@ namespace Transportlaget
 						buffer[k] = (byte)'A';
 				}*/
 
+<<<<<<< HEAD
 			Console.WriteLine (line);
 				link.send (buffer, size+4);
+=======
+			
+			link.send (buffer, buffer.Length);
+>>>>>>> a7cc1fa92c65bb4921730215646917d258cab5a7
 
 				errorCount++;
 
@@ -150,24 +158,35 @@ namespace Transportlaget
 		{
 			if (buffer != null)
 				Array.Clear (buffer, 0, buffer.Length);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> a7cc1fa92c65bb4921730215646917d258cab5a7
 			int n = 0;
 			// TO DO Your own code
-			 
+			bool ack;
+
 			do {
 				
 					
 				 	n = link.receive (ref buffer);
+				ack = checksum.checkChecksum (buffer, buffer.Length);
+				sendAck (ack);
 
-				sendAck (checksum.checkChecksum (buffer, buffer.Length));
+			} while(!ack);
 
-			} while(!checksum.checkChecksum (buffer, buffer.Length));
-
+<<<<<<< HEAD
 			if (!(old_seqNo == buffer [2])) 
 			{
 				Array.Copy (buffer, 4, buf, 0, n-4);
+=======
+			if (old_seqNo != buffer [2]) {
+				Array.Copy (buffer, 4, buf, 0, buf.Length);
+>>>>>>> a7cc1fa92c65bb4921730215646917d258cab5a7
 				old_seqNo = buffer [2];
 			}
+
 
 			return n-(int)TransSize.ACKSIZE;
 		}
